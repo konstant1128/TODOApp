@@ -1,5 +1,9 @@
 # 📋 Smart Todo Tracker
 
+[![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/Status-In%20Development-orange.svg)]()
+
 **Умный персональный трекер задач** – веб-приложение для управления личными задачами с интеллектуальной сортировкой (матрица Эйзенхауэра), аналитикой продуктивности и автоматическими email‑напоминаниями.
 
 > 🎓 Учебный проект по программной инженерии.
@@ -17,35 +21,70 @@
 
 ---
 
+## 📋 Требования
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) или выше
+- Git (для клонирования репозитория)
+- Любой современный браузер (Chrome, Firefox, Edge)
+
+---
+
+## 🚧 Текущий статус
+
+Проект находится в активной разработке.
+
+**Реализовано:**
+- ✅ Аутентификация (регистрация/вход)
+- ✅ CRUD для задач (создание, редактирование, удаление, отметка выполнения)
+- ✅ Репозиторий с изоляцией данных по пользователям
+- ✅ Валидация форм на клиенте и сервере
+
+**В разработке:**
+- 🔄 Матрица Эйзенхауэра
+- 🔄 Статистика и графики
+- 🔄 Email-напоминания
+
+---
+
 ## 🛠 Технологический стек
 
 | Компонент | Технология |
 |-----------|------------|
 | **Backend** | ASP.NET Core MVC (.NET 8) |
 | **ORM** | Entity Framework Core |
-| **База данных** | SQL Server (LocalDB / PostgreSQL) |
+| **База данных** | SQLite (файловая БД) |
 | **Аутентификация** | ASP.NET Core Identity |
 | **Фоновые задачи** | BackgroundService |
 | **Почта** | MailKit (SMTP) |
 | **Визуализация** | Chart.js |
-| **Frontend** | Razor Pages + Bootstrap 5 |
+| **Frontend** | Razor Views + Bootstrap 5 |
 | **Логирование** | ILogger |
 
 ---
 
-## 📁 Структура проекта (монолит)
+## 📁 Структура проекта
 
 ```
 TodoApp/
-├── Models/               // Сущности, перечисления, ViewModels
-├── Data/                 // Контекст БД и репозитории
-├── Services/             // EmailSender, фоновый сервис
-├── Controllers/          // MVC-контроллеры
-├── Views/                // Razor-представления
-├── wwwroot/              // CSS, JS, библиотеки (Chart.js, Bootstrap)
-├── Migrations/           // Миграции EF Core
-├── Program.cs            // Настройка DI, Identity, сервисов
-└── appsettings.json      // Строки подключения, настройки почты
+├── Models/
+│   ├── Entities/           # TaskItem, ApplicationUser
+│   ├── Enums/              # Priority, Urgency
+│   └── ViewModels/         # TaskCreateViewModel, TaskEditViewModel
+├── Data/
+│   ├── ApplicationDbContext.cs
+│   └── Repositories/       # ITaskRepository, TaskRepository
+├── Controllers/
+│   ├── HomeController.cs
+│   └── TasksController.cs
+├── Views/
+│   ├── Home/
+│   ├── Tasks/              # Index, Create, Edit
+│   └── Shared/
+├── wwwroot/                # CSS, JS, Bootstrap
+├── Migrations/             # Миграции EF Core
+├── Program.cs              # DI, Identity, сервисы
+├── appsettings.json        # Строка подключения SQLite
+└── todoapp.db              # Файл базы данных (создается автоматически)
 ```
 
 ---
@@ -59,12 +98,13 @@ cd todoapp
 ```
 
 ### 2. Настройка базы данных
-В `appsettings.json` укажите строку подключения к SQL Server (или PostgreSQL):
+База данных SQLite создается автоматически при первом запуске. Строка подключения уже настроена в `appsettings.json`:
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=TodoAppDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+  "DefaultConnection": "Data Source=todoapp.db"
 }
 ```
+Никаких дополнительных действий не требуется — база создастся автоматически.
 
 ### 3. Применение миграций
 ```bash
@@ -93,15 +133,13 @@ dotnet run
 
 ## 📸 Скриншоты
 
+> Скриншоты будут добавлены по мере реализации интерфейса.
 
 ---
 
-## 🧪 Тестирование (опционально)
+## 🧪 Тестирование (планируется)
 
-Для запуска юнит-тестов (xUnit):
-```bash
-dotnet test
-```
+Юнит-тесты (xUnit) будут добавлены на финальном этапе разработки.
 
 ---
 
@@ -114,6 +152,12 @@ dotnet test
 ## 🤝 Как внести вклад
 
 Поскольку проект учебный, внешние контрибьюции не принимаются, но вы можете форкнуть репозиторий и доработать под свои задачи.
+
+---
+
+## 📞 Контакты
+
+Если у вас есть вопросы по проекту, создайте Issue в этом репозитории.
 
 ---
 
