@@ -1,10 +1,8 @@
- 
-```markdown
 # 📋 Smart Todo Tracker
 
 **Умный персональный трекер задач** – веб-приложение для управления личными задачами с интеллектуальной сортировкой (матрица Эйзенхауэра), аналитикой продуктивности и автоматическими email‑напоминаниями.
 
-> 🎓 Учебный проект по программной инженерии. 
+> 🎓 Учебный проект по программной инженерии.
 
 ---
 
@@ -61,7 +59,7 @@ cd todoapp
 ```
 
 ### 2. Настройка базы данных
-- В `appsettings.json` укажите строку подключения к SQL Server (или PostgreSQL):
+В `appsettings.json` укажите строку подключения к SQL Server (или PostgreSQL):
 ```json
 "ConnectionStrings": {
   "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=TodoAppDb;Trusted_Connection=True;MultipleActiveResultSets=true"
@@ -95,11 +93,6 @@ dotnet run
 
 ## 📸 Скриншоты
 
-> *Заглушка – замените на реальные изображения.*
-
-| Главная страница (матрица) | Статистика |
-|---------------------------|------------|
-| ![Matrix](screenshots/matrix.png) | ![Stats](screenshots/stats.png) |
 
 ---
 
@@ -127,8 +120,5 @@ dotnet test
 ## ✉️ Контакты
 
 Автор: konstant1128  
-GitHub: [@yourusername](https://github.com/konstant1128)  
+GitHub: [@konstant1128 ](https://github.com/konstant1128)  
 Email: sk292824489@gmail.com
-```
-
----
